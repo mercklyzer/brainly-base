@@ -1,0 +1,30 @@
+version: "3"
+ 
+services:
+    brainly_web:
+        extends:
+            file: docker-compose-base.yml
+            service: brainly_web
+        volumes:
+            - ./web/:/app
+        ports:
+            - 4200:4200
+            - 49153:49153
+        command: 'bash start.sh'
+
+    brainly_api:
+        extends:
+            file: docker-compose-base.yml
+            service: brainly_api
+        volumes:
+            - ./api/:/app
+    
+    brainly_mysql:
+        extends:
+            file: docker-compose-base.yml
+            service: brainly_mysql
+    
+    brainly_redis:
+        extends:
+            file: docker-compose-base.yml
+            service: brainly_redis
